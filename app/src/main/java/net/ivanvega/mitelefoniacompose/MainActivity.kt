@@ -25,6 +25,10 @@ import net.ivanvega.mitelefoniacompose.ui.theme.MiTelefoniaComposeTheme
 
 
 class MainActivity : ComponentActivity() {
+    //private lateinit var binding : ActivityMainBinding
+    //private var elBroadcastReceiver : MiReceiverTelefonia? = null
+    //private var numero = ""
+    //private var mensaje = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

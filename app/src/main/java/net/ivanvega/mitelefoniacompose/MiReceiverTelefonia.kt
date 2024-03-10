@@ -39,8 +39,6 @@ class MiReceiverTelefonia: BroadcastReceiver()
             }
             Log.d("MiBroadcast", strMensaje)
         }
-
-
         //Log.d("MiBroadcast", action)
         //Log.d("MiBroadcast", uri.toString());
         //Log.d("MiBroadcast", uri.toString());
@@ -60,7 +58,5 @@ class MiReceiverTelefonia: BroadcastReceiver()
         val log = sb.toString()
         /*Log.d(TAG, log)
         Toast.makeText(context, log, Toast.LENGTH_LONG).show()*/
-
-
     }
 }
