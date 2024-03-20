@@ -79,26 +79,26 @@ fun HomeScreen(screenViewModel: ScreenViewModel = viewModel()) {
             val phoneNumberState = screenViewModel.phoneNumber.value
             val messageState = screenViewModel.message.value
             TextField(
-                value = phoneNumberState,
-                onValueChange = { screenViewModel.setPhoneNumber(it.text) },
+                value = screenViewModel.stadoMensaje.telefono,
+                onValueChange = { screenViewModel.onvalue(it , "telefono") },
                 label = { Text("Phone Number") },
-                enabled = true, // Habilitar la edición del número de teléfono
+               // enabled = true, // Habilitar la edición del número de teléfono
                 visualTransformation = VisualTransformation.None // Para evitar la inversión del texto
             )
             Spacer(modifier = Modifier.padding(10.dp))
             TextField(
-                value = messageState,
-                onValueChange = { screenViewModel.setMessage(it.text) },
+                value = screenViewModel.stadoMensaje.mensjae,
+                onValueChange = { screenViewModel.onvalue( it , "mensaje") },
                 label = { Text("Message") },
-                enabled = true, // Habilitar la edición del mensaje
+               // enabled = true, // Habilitar la edición del mensaje
                 visualTransformation = VisualTransformation.None // Para evitar la inversión del texto
             )
             Button(
                 onClick = {
                     screenViewModel.sendSMS(
                         context,
-                        phoneNumberState.text,
-                        messageState.text
+                        screenViewModel.stadoMensaje.telefono,
+                        screenViewModel.stadoMensaje.mensjae
                     )
                 },
                 modifier = Modifier.padding(top = 16.dp)
@@ -108,7 +108,7 @@ fun HomeScreen(screenViewModel: ScreenViewModel = viewModel()) {
             SystemBroadcastReceiver(TelephonyManager.ACTION_PHONE_STATE_CHANGED) { intent ->
                 val phoneNumber = intent?.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER)
                 if (phoneNumber == phoneNumberState.text) {
-                    screenViewModel.sendSMS(context, phoneNumberState.text, messageState.text)
+                    screenViewModel.sendSMS(context,screenViewModel.stadoMensaje.telefono, screenViewModel.stadoMensaje.mensjae)
                 }
             }
         }
